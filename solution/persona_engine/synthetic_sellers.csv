@@ -1,0 +1,11 @@
+fk_glusr_usr_id,company_name,phone_number,seller_city,seller_state,business_type,annual_turnover,nature_of_business,gst_registration_year,top_category_1,eng_product_count,already_in_touch_with_executive,do_not_call_requested,attempt_no
+900000010,Shree Balaji Packaging Pvt Ltd,,Ahmedabad,Gujarat,Limited Company,5 - 25 Cr,Manufacturer,2012,Corrugated Box,64,0,0,1
+900000021,Navya Herbal Care,,Lucknow,Uttar Pradesh,Proprietorship,0 - 40 L,Manufacturer,2025,Herbal Face Pack,4,0,0,1
+900000032,Gupta Kirana and General Store,,Jaipur,Rajasthan,Proprietorship,0 - 40 L,Trader - Retailer,2019,Basmati Rice,9,0,0,1
+900000043,Precision Auto Components,,Pune,Maharashtra,Partnership,40 L - 1.5 Cr,Manufacturer,2016,CNC Turned Parts,22,0,0,1
+900000054,Sri Murugan Interiors,,Chennai,Tamil Nadu,Proprietorship,0 - 40 L,Service Provider and Others,2018,Interior Designing Service,7,0,0,1
+900000065,Kolkata Steel Traders,,Kolkata,West Bengal,Partnership,40 L - 1.5 Cr,Trader - Wholesaler/Distributor,2015,MS Pipe,18,1,0,2
+900000076,Raj Electricals,,Delhi,Delhi,Proprietorship,40 L - 1.5 Cr,Trader - Retailer,2017,LED Panel Light,14,0,0,3
+900000087,Deccan Agro Foods,,Hyderabad,Telangana,Proprietorship,0 - 40 L,Trader - Wholesaler/Distributor,2026,Toor Dal,5,0,0,1
+900000098,Om Sai Tours,,Indore,Madhya Pradesh,Proprietorship,0 - 40 L,Service Provider and Others,2020,Car Rental Service,3,0,1,1
+900000109,Punjab Agri Implements,,Ludhiana,Punjab,Proprietorship,1.5 - 5 Cr,Manufacturer,2010,Tractor Trolley,31,0,0,1

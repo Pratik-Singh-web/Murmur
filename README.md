@@ -6,6 +6,10 @@ Team repo for **IndiaMART Voice AI Hackathon 2.0** (9–10 Oct 2026). We will bu
 >
 > Per hackathon rules, all build work happens on 9–10 Oct and pre-built solutions are disqualified. Until Day 1 this repo holds **only docs and research** — no code.
 
+## Solution
+
+The working build is in **[solution/](solution/README.md)**: persona engine, Sarvam agent configuration, results service and evaluation. Start with **[solution/SETUP_GUIDE.md](solution/SETUP_GUIDE.md)**.
+
 ## Docs
 
 | # | Doc | What it covers |

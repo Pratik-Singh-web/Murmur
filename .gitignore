@@ -28,3 +28,11 @@ dist/
 # Organiser datasets (customer data) - never commit
 Persona Files/
 *.csv
+
+# Solution: local outputs and secrets
+solution/out/
+solution/.env
+solution/.venv/
+# Fictional / generated CSVs that are safe to commit
+!solution/persona_engine/synthetic_sellers.csv
+!solution/eval/scenarios.csv

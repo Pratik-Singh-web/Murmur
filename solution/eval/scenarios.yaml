@@ -1,0 +1,1094 @@
+- id: established_enterprise__receptive
+  persona_id: established_enterprise
+  behaviour: receptive
+  simulated_seller: 'You are a seller on IndiaMART: Shree Balaji Packaging Pvt Ltd (Corrugated Box, Ahmedabad). Speak Hinglish,
+    short replies. You are the owner. You are open to hearing more. Ask one simple question about what the meeting is, then
+    agree to one of the offered times.'
+  expected_outcome: meeting_fixed
+  pass_criteria: &id001
+  - Agent offers specific time options
+  - Agent repeats the chosen time and gets explicit confirmation
+  - Agent's turns are short (≤ 2 sentences)
+  - Agent never invents numbers or prices
+  variables:
+    seller_glid: '900000010'
+    persona_id: established_enterprise
+    persona_label: Established enterprise
+    voice_variant: formal
+    language: Hindi
+    agent_name: Aditya
+    address: ji
+    company: Shree Balaji Packaging Pvt Ltd
+    category: Corrugated Box
+    city: Ahmedabad
+    tone: Respectful, concise, business-value first. Treat them as an experienced owner.
+    formality: high
+    pitch_cap_turns: '2'
+    opener: Namaste ji, IndiaMART se Aditya. Shree Balaji Packaging Pvt Ltd ki Corrugated Box listing ke baare mein ek minute
+      — kya abhi baat ho sakti hai?
+    value_hook: aapki listing par jo enquiries aa rahi hain, unme se kaafi convert ho sakti hain — hamare account manager
+      15 minute mein dikha denge kahan buyers chhoot rahe hain
+    ask: Kya is hafte 15 minute ki meeting rakh lein? kal subah 11 baje ya kal shaam 4 baje, jo aapko suit kare.
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: long IndiaMART introduction; repeating the pitch after a no; casual words like 'bhai'
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: established_enterprise__busy
+  persona_id: established_enterprise
+  behaviour: busy
+  simulated_seller: 'You are a seller on IndiaMART: Shree Balaji Packaging Pvt Ltd (Corrugated Box, Ahmedabad). Speak Hinglish,
+    short replies. You are in the middle of work (customers, factory floor or a meeting). Say you are busy right now. If the
+    agent offers a specific time, pick the evening one. If the agent keeps pitching, hang up.'
+  expected_outcome: callback_scheduled or meeting_fixed
+  pass_criteria: &id002
+  - After 'busy', agent's next turn is ONE sentence
+  - Agent offers a time immediately instead of continuing the pitch
+  - Agent confirms the time back
+  variables:
+    seller_glid: '900000010'
+    persona_id: established_enterprise
+    persona_label: Established enterprise
+    voice_variant: formal
+    language: Hindi
+    agent_name: Aditya
+    address: ji
+    company: Shree Balaji Packaging Pvt Ltd
+    category: Corrugated Box
+    city: Ahmedabad
+    tone: Respectful, concise, business-value first. Treat them as an experienced owner.
+    formality: high
+    pitch_cap_turns: '2'
+    opener: Namaste ji, IndiaMART se Aditya. Shree Balaji Packaging Pvt Ltd ki Corrugated Box listing ke baare mein ek minute
+      — kya abhi baat ho sakti hai?
+    value_hook: aapki listing par jo enquiries aa rahi hain, unme se kaafi convert ho sakti hain — hamare account manager
+      15 minute mein dikha denge kahan buyers chhoot rahe hain
+    ask: Kya is hafte 15 minute ki meeting rakh lein? kal subah 11 baje ya kal shaam 4 baje, jo aapko suit kare.
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: long IndiaMART introduction; repeating the pitch after a no; casual words like 'bhai'
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: established_enterprise__already_met
+  persona_id: established_enterprise
+  behaviour: already_met
+  simulated_seller: 'You are a seller on IndiaMART: Shree Balaji Packaging Pvt Ltd (Corrugated Box, Ahmedabad). Speak Hinglish,
+    short replies. Say an IndiaMART executive already visited you last month and you already have IndiaMART. Be mildly dismissive.
+    Agree only if the agent offers a follow-up with the same executive.'
+  expected_outcome: meeting_fixed or already_in_touch
+  pass_criteria: &id003
+  - Agent acknowledges the earlier visit
+  - Agent offers a follow-up rather than repeating the full pitch
+  - Agent accepts a no gracefully
+  variables:
+    seller_glid: '900000010'
+    persona_id: established_enterprise
+    persona_label: Established enterprise
+    voice_variant: formal
+    language: Hindi
+    agent_name: Aditya
+    address: ji
+    company: Shree Balaji Packaging Pvt Ltd
+    category: Corrugated Box
+    city: Ahmedabad
+    tone: Respectful, concise, business-value first. Treat them as an experienced owner.
+    formality: high
+    pitch_cap_turns: '2'
+    opener: Namaste ji, IndiaMART se Aditya. Shree Balaji Packaging Pvt Ltd ki Corrugated Box listing ke baare mein ek minute
+      — kya abhi baat ho sakti hai?
+    value_hook: aapki listing par jo enquiries aa rahi hain, unme se kaafi convert ho sakti hain — hamare account manager
+      15 minute mein dikha denge kahan buyers chhoot rahe hain
+    ask: Kya is hafte 15 minute ki meeting rakh lein? kal subah 11 baje ya kal shaam 4 baje, jo aapko suit kare.
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: long IndiaMART introduction; repeating the pitch after a no; casual words like 'bhai'
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: established_enterprise__price
+  persona_id: established_enterprise
+  behaviour: price
+  simulated_seller: 'You are a seller on IndiaMART: Shree Balaji Packaging Pvt Ltd (Corrugated Box, Ahmedabad). Speak Hinglish,
+    short replies. Ask how much the IndiaMART package costs, twice. You are interested if the price is reasonable. Agree to
+    a meeting if the agent says the executive will explain options.'
+  expected_outcome: meeting_fixed
+  pass_criteria: &id004
+  - Agent does not quote any price or number
+  - Agent treats the question as interest and moves to booking
+  - Agent mentions the meeting is free / no obligation
+  variables:
+    seller_glid: '900000010'
+    persona_id: established_enterprise
+    persona_label: Established enterprise
+    voice_variant: formal
+    language: Hindi
+    agent_name: Aditya
+    address: ji
+    company: Shree Balaji Packaging Pvt Ltd
+    category: Corrugated Box
+    city: Ahmedabad
+    tone: Respectful, concise, business-value first. Treat them as an experienced owner.
+    formality: high
+    pitch_cap_turns: '2'
+    opener: Namaste ji, IndiaMART se Aditya. Shree Balaji Packaging Pvt Ltd ki Corrugated Box listing ke baare mein ek minute
+      — kya abhi baat ho sakti hai?
+    value_hook: aapki listing par jo enquiries aa rahi hain, unme se kaafi convert ho sakti hain — hamare account manager
+      15 minute mein dikha denge kahan buyers chhoot rahe hain
+    ask: Kya is hafte 15 minute ki meeting rakh lein? kal subah 11 baje ya kal shaam 4 baje, jo aapko suit kare.
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: long IndiaMART introduction; repeating the pitch after a no; casual words like 'bhai'
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: established_enterprise__irritated
+  persona_id: established_enterprise
+  behaviour: irritated
+  simulated_seller: 'You are a seller on IndiaMART: Shree Balaji Packaging Pvt Ltd (Corrugated Box, Ahmedabad). Speak Hinglish,
+    short replies. You get many calls. Say ''baar baar call mat karo'' irritably. If the agent pitches again, get angrier.'
+  expected_outcome: do_not_call
+  pass_criteria: &id005
+  - Agent apologises once and does not pitch again
+  - Agent confirms no more calls and ends
+  - Outcome recorded as do_not_call
+  variables:
+    seller_glid: '900000010'
+    persona_id: established_enterprise
+    persona_label: Established enterprise
+    voice_variant: formal
+    language: Hindi
+    agent_name: Aditya
+    address: ji
+    company: Shree Balaji Packaging Pvt Ltd
+    category: Corrugated Box
+    city: Ahmedabad
+    tone: Respectful, concise, business-value first. Treat them as an experienced owner.
+    formality: high
+    pitch_cap_turns: '2'
+    opener: Namaste ji, IndiaMART se Aditya. Shree Balaji Packaging Pvt Ltd ki Corrugated Box listing ke baare mein ek minute
+      — kya abhi baat ho sakti hai?
+    value_hook: aapki listing par jo enquiries aa rahi hain, unme se kaafi convert ho sakti hain — hamare account manager
+      15 minute mein dikha denge kahan buyers chhoot rahe hain
+    ask: Kya is hafte 15 minute ki meeting rakh lein? kal subah 11 baje ya kal shaam 4 baje, jo aapko suit kare.
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: long IndiaMART introduction; repeating the pitch after a no; casual words like 'bhai'
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: new_seller__receptive
+  persona_id: new_seller
+  behaviour: receptive
+  simulated_seller: 'You are a seller on IndiaMART: Navya Herbal Care (Herbal Face Pack, Lucknow). Speak Hinglish, short replies.
+    You are the owner. You are open to hearing more. Ask one simple question about what the meeting is, then agree to one
+    of the offered times.'
+  expected_outcome: meeting_fixed
+  pass_criteria: *id001
+  variables:
+    seller_glid: '900000021'
+    persona_id: new_seller
+    persona_label: New seller (GST ≤ 2 years)
+    voice_variant: warm
+    language: Hindi
+    agent_name: Simran
+    address: ji
+    company: Navya Herbal Care
+    category: Herbal Face Pack
+    city: Lucknow
+    tone: Warm, encouraging, guiding. They are early — show how a meeting helps them get first buyers.
+    formality: medium
+    pitch_cap_turns: '3'
+    opener: Namaste ji, IndiaMART se Simran bol rahi hoon. Navya Herbal Care ke liye ek achhi khabar thi — ek minute hai?
+    value_hook: hamare executive aapki profile aur products sahi se set kar denge, jisse Herbal Face Pack ke buyers aap tak
+      pahunchein
+    ask: Executive aapke paas aakar 20 minute mein sab samjha denge. kal subah 11 baje theek rahega ya kal shaam 4 baje?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: jargon (CQS, BuyLead, PNS); pressure about paid packages in the first turn
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: new_seller__busy
+  persona_id: new_seller
+  behaviour: busy
+  simulated_seller: 'You are a seller on IndiaMART: Navya Herbal Care (Herbal Face Pack, Lucknow). Speak Hinglish, short replies.
+    You are in the middle of work (customers, factory floor or a meeting). Say you are busy right now. If the agent offers
+    a specific time, pick the evening one. If the agent keeps pitching, hang up.'
+  expected_outcome: callback_scheduled or meeting_fixed
+  pass_criteria: *id002
+  variables:
+    seller_glid: '900000021'
+    persona_id: new_seller
+    persona_label: New seller (GST ≤ 2 years)
+    voice_variant: warm
+    language: Hindi
+    agent_name: Simran
+    address: ji
+    company: Navya Herbal Care
+    category: Herbal Face Pack
+    city: Lucknow
+    tone: Warm, encouraging, guiding. They are early — show how a meeting helps them get first buyers.
+    formality: medium
+    pitch_cap_turns: '3'
+    opener: Namaste ji, IndiaMART se Simran bol rahi hoon. Navya Herbal Care ke liye ek achhi khabar thi — ek minute hai?
+    value_hook: hamare executive aapki profile aur products sahi se set kar denge, jisse Herbal Face Pack ke buyers aap tak
+      pahunchein
+    ask: Executive aapke paas aakar 20 minute mein sab samjha denge. kal subah 11 baje theek rahega ya kal shaam 4 baje?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: jargon (CQS, BuyLead, PNS); pressure about paid packages in the first turn
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: new_seller__already_met
+  persona_id: new_seller
+  behaviour: already_met
+  simulated_seller: 'You are a seller on IndiaMART: Navya Herbal Care (Herbal Face Pack, Lucknow). Speak Hinglish, short replies.
+    Say an IndiaMART executive already visited you last month and you already have IndiaMART. Be mildly dismissive. Agree
+    only if the agent offers a follow-up with the same executive.'
+  expected_outcome: meeting_fixed or already_in_touch
+  pass_criteria: *id003
+  variables:
+    seller_glid: '900000021'
+    persona_id: new_seller
+    persona_label: New seller (GST ≤ 2 years)
+    voice_variant: warm
+    language: Hindi
+    agent_name: Simran
+    address: ji
+    company: Navya Herbal Care
+    category: Herbal Face Pack
+    city: Lucknow
+    tone: Warm, encouraging, guiding. They are early — show how a meeting helps them get first buyers.
+    formality: medium
+    pitch_cap_turns: '3'
+    opener: Namaste ji, IndiaMART se Simran bol rahi hoon. Navya Herbal Care ke liye ek achhi khabar thi — ek minute hai?
+    value_hook: hamare executive aapki profile aur products sahi se set kar denge, jisse Herbal Face Pack ke buyers aap tak
+      pahunchein
+    ask: Executive aapke paas aakar 20 minute mein sab samjha denge. kal subah 11 baje theek rahega ya kal shaam 4 baje?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: jargon (CQS, BuyLead, PNS); pressure about paid packages in the first turn
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: new_seller__price
+  persona_id: new_seller
+  behaviour: price
+  simulated_seller: 'You are a seller on IndiaMART: Navya Herbal Care (Herbal Face Pack, Lucknow). Speak Hinglish, short replies.
+    Ask how much the IndiaMART package costs, twice. You are interested if the price is reasonable. Agree to a meeting if
+    the agent says the executive will explain options.'
+  expected_outcome: meeting_fixed
+  pass_criteria: *id004
+  variables:
+    seller_glid: '900000021'
+    persona_id: new_seller
+    persona_label: New seller (GST ≤ 2 years)
+    voice_variant: warm
+    language: Hindi
+    agent_name: Simran
+    address: ji
+    company: Navya Herbal Care
+    category: Herbal Face Pack
+    city: Lucknow
+    tone: Warm, encouraging, guiding. They are early — show how a meeting helps them get first buyers.
+    formality: medium
+    pitch_cap_turns: '3'
+    opener: Namaste ji, IndiaMART se Simran bol rahi hoon. Navya Herbal Care ke liye ek achhi khabar thi — ek minute hai?
+    value_hook: hamare executive aapki profile aur products sahi se set kar denge, jisse Herbal Face Pack ke buyers aap tak
+      pahunchein
+    ask: Executive aapke paas aakar 20 minute mein sab samjha denge. kal subah 11 baje theek rahega ya kal shaam 4 baje?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: jargon (CQS, BuyLead, PNS); pressure about paid packages in the first turn
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: new_seller__irritated
+  persona_id: new_seller
+  behaviour: irritated
+  simulated_seller: 'You are a seller on IndiaMART: Navya Herbal Care (Herbal Face Pack, Lucknow). Speak Hinglish, short replies.
+    You get many calls. Say ''baar baar call mat karo'' irritably. If the agent pitches again, get angrier.'
+  expected_outcome: do_not_call
+  pass_criteria: *id005
+  variables:
+    seller_glid: '900000021'
+    persona_id: new_seller
+    persona_label: New seller (GST ≤ 2 years)
+    voice_variant: warm
+    language: Hindi
+    agent_name: Simran
+    address: ji
+    company: Navya Herbal Care
+    category: Herbal Face Pack
+    city: Lucknow
+    tone: Warm, encouraging, guiding. They are early — show how a meeting helps them get first buyers.
+    formality: medium
+    pitch_cap_turns: '3'
+    opener: Namaste ji, IndiaMART se Simran bol rahi hoon. Navya Herbal Care ke liye ek achhi khabar thi — ek minute hai?
+    value_hook: hamare executive aapki profile aur products sahi se set kar denge, jisse Herbal Face Pack ke buyers aap tak
+      pahunchein
+    ask: Executive aapke paas aakar 20 minute mein sab samjha denge. kal subah 11 baje theek rahega ya kal shaam 4 baje?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: jargon (CQS, BuyLead, PNS); pressure about paid packages in the first turn
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: busy_retailer__receptive
+  persona_id: busy_retailer
+  behaviour: receptive
+  simulated_seller: 'You are a seller on IndiaMART: Gupta Kirana and General Store (Basmati Rice, Jaipur). Speak Hinglish,
+    short replies. You are the owner. You are open to hearing more. Ask one simple question about what the meeting is, then
+    agree to one of the offered times.'
+  expected_outcome: meeting_fixed
+  pass_criteria: *id001
+  variables:
+    seller_glid: '900000032'
+    persona_id: busy_retailer
+    persona_label: Busy retailer / shopkeeper
+    voice_variant: brisk
+    language: Hindi
+    agent_name: Priya
+    address: ji
+    company: Gupta Kirana and General Store
+    category: Basmati Rice
+    city: Jaipur
+    tone: Brisk and respectful of their time. One line of value, then a time choice.
+    formality: medium
+    pitch_cap_turns: '1'
+    opener: Namaste ji, IndiaMART se Priya — sirf 20 second lungi.
+    value_hook: aapke area ke buyers Basmati Rice dhoondh rahe hain — executive 15 minute mein bata denge unhe kaise pakdein
+    ask: Dukaan par kab free rehte hain — kal subah 11 baje ya kal shaam 4 baje?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: more than one sentence per turn; asking open questions like 'kaisa chal raha hai business'
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: busy_retailer__busy
+  persona_id: busy_retailer
+  behaviour: busy
+  simulated_seller: 'You are a seller on IndiaMART: Gupta Kirana and General Store (Basmati Rice, Jaipur). Speak Hinglish,
+    short replies. You are in the middle of work (customers, factory floor or a meeting). Say you are busy right now. If the
+    agent offers a specific time, pick the evening one. If the agent keeps pitching, hang up.'
+  expected_outcome: callback_scheduled or meeting_fixed
+  pass_criteria: *id002
+  variables:
+    seller_glid: '900000032'
+    persona_id: busy_retailer
+    persona_label: Busy retailer / shopkeeper
+    voice_variant: brisk
+    language: Hindi
+    agent_name: Priya
+    address: ji
+    company: Gupta Kirana and General Store
+    category: Basmati Rice
+    city: Jaipur
+    tone: Brisk and respectful of their time. One line of value, then a time choice.
+    formality: medium
+    pitch_cap_turns: '1'
+    opener: Namaste ji, IndiaMART se Priya — sirf 20 second lungi.
+    value_hook: aapke area ke buyers Basmati Rice dhoondh rahe hain — executive 15 minute mein bata denge unhe kaise pakdein
+    ask: Dukaan par kab free rehte hain — kal subah 11 baje ya kal shaam 4 baje?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: more than one sentence per turn; asking open questions like 'kaisa chal raha hai business'
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: busy_retailer__already_met
+  persona_id: busy_retailer
+  behaviour: already_met
+  simulated_seller: 'You are a seller on IndiaMART: Gupta Kirana and General Store (Basmati Rice, Jaipur). Speak Hinglish,
+    short replies. Say an IndiaMART executive already visited you last month and you already have IndiaMART. Be mildly dismissive.
+    Agree only if the agent offers a follow-up with the same executive.'
+  expected_outcome: meeting_fixed or already_in_touch
+  pass_criteria: *id003
+  variables:
+    seller_glid: '900000032'
+    persona_id: busy_retailer
+    persona_label: Busy retailer / shopkeeper
+    voice_variant: brisk
+    language: Hindi
+    agent_name: Priya
+    address: ji
+    company: Gupta Kirana and General Store
+    category: Basmati Rice
+    city: Jaipur
+    tone: Brisk and respectful of their time. One line of value, then a time choice.
+    formality: medium
+    pitch_cap_turns: '1'
+    opener: Namaste ji, IndiaMART se Priya — sirf 20 second lungi.
+    value_hook: aapke area ke buyers Basmati Rice dhoondh rahe hain — executive 15 minute mein bata denge unhe kaise pakdein
+    ask: Dukaan par kab free rehte hain — kal subah 11 baje ya kal shaam 4 baje?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: more than one sentence per turn; asking open questions like 'kaisa chal raha hai business'
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: busy_retailer__price
+  persona_id: busy_retailer
+  behaviour: price
+  simulated_seller: 'You are a seller on IndiaMART: Gupta Kirana and General Store (Basmati Rice, Jaipur). Speak Hinglish,
+    short replies. Ask how much the IndiaMART package costs, twice. You are interested if the price is reasonable. Agree to
+    a meeting if the agent says the executive will explain options.'
+  expected_outcome: meeting_fixed
+  pass_criteria: *id004
+  variables:
+    seller_glid: '900000032'
+    persona_id: busy_retailer
+    persona_label: Busy retailer / shopkeeper
+    voice_variant: brisk
+    language: Hindi
+    agent_name: Priya
+    address: ji
+    company: Gupta Kirana and General Store
+    category: Basmati Rice
+    city: Jaipur
+    tone: Brisk and respectful of their time. One line of value, then a time choice.
+    formality: medium
+    pitch_cap_turns: '1'
+    opener: Namaste ji, IndiaMART se Priya — sirf 20 second lungi.
+    value_hook: aapke area ke buyers Basmati Rice dhoondh rahe hain — executive 15 minute mein bata denge unhe kaise pakdein
+    ask: Dukaan par kab free rehte hain — kal subah 11 baje ya kal shaam 4 baje?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: more than one sentence per turn; asking open questions like 'kaisa chal raha hai business'
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: busy_retailer__irritated
+  persona_id: busy_retailer
+  behaviour: irritated
+  simulated_seller: 'You are a seller on IndiaMART: Gupta Kirana and General Store (Basmati Rice, Jaipur). Speak Hinglish,
+    short replies. You get many calls. Say ''baar baar call mat karo'' irritably. If the agent pitches again, get angrier.'
+  expected_outcome: do_not_call
+  pass_criteria: *id005
+  variables:
+    seller_glid: '900000032'
+    persona_id: busy_retailer
+    persona_label: Busy retailer / shopkeeper
+    voice_variant: brisk
+    language: Hindi
+    agent_name: Priya
+    address: ji
+    company: Gupta Kirana and General Store
+    category: Basmati Rice
+    city: Jaipur
+    tone: Brisk and respectful of their time. One line of value, then a time choice.
+    formality: medium
+    pitch_cap_turns: '1'
+    opener: Namaste ji, IndiaMART se Priya — sirf 20 second lungi.
+    value_hook: aapke area ke buyers Basmati Rice dhoondh rahe hain — executive 15 minute mein bata denge unhe kaise pakdein
+    ask: Dukaan par kab free rehte hain — kal subah 11 baje ya kal shaam 4 baje?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: more than one sentence per turn; asking open questions like 'kaisa chal raha hai business'
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: manufacturer__receptive
+  persona_id: manufacturer
+  behaviour: receptive
+  simulated_seller: 'You are a seller on IndiaMART: Precision Auto Components (CNC Turned Parts, Pune). Speak Hinglish, short
+    replies. You are the owner. You are open to hearing more. Ask one simple question about what the meeting is, then agree
+    to one of the offered times.'
+  expected_outcome: meeting_fixed
+  pass_criteria: *id001
+  variables:
+    seller_glid: '900000043'
+    persona_id: manufacturer
+    persona_label: Manufacturer
+    voice_variant: formal
+    language: Hindi
+    agent_name: Aditya
+    address: ji
+    company: Precision Auto Components
+    category: CNC Turned Parts
+    city: Pune
+    tone: Practical, B2B. Talk about bulk buyers and repeat orders.
+    formality: high
+    pitch_cap_turns: '2'
+    opener: Namaste ji, Aditya IndiaMART se. Aap CNC Turned Parts banate hain na? Ek minute lunga.
+    value_hook: bulk aur repeat buyers ki enquiries aap tak sahi tarah pahunchein, iske liye account manager plan dikha denge
+    ask: 15 minute ki meeting kal subah 11 baje ya kal shaam 4 baje — kab rakhein?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: retail-style language; vague claims without the category
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: manufacturer__busy
+  persona_id: manufacturer
+  behaviour: busy
+  simulated_seller: 'You are a seller on IndiaMART: Precision Auto Components (CNC Turned Parts, Pune). Speak Hinglish, short
+    replies. You are in the middle of work (customers, factory floor or a meeting). Say you are busy right now. If the agent
+    offers a specific time, pick the evening one. If the agent keeps pitching, hang up.'
+  expected_outcome: callback_scheduled or meeting_fixed
+  pass_criteria: *id002
+  variables:
+    seller_glid: '900000043'
+    persona_id: manufacturer
+    persona_label: Manufacturer
+    voice_variant: formal
+    language: Hindi
+    agent_name: Aditya
+    address: ji
+    company: Precision Auto Components
+    category: CNC Turned Parts
+    city: Pune
+    tone: Practical, B2B. Talk about bulk buyers and repeat orders.
+    formality: high
+    pitch_cap_turns: '2'
+    opener: Namaste ji, Aditya IndiaMART se. Aap CNC Turned Parts banate hain na? Ek minute lunga.
+    value_hook: bulk aur repeat buyers ki enquiries aap tak sahi tarah pahunchein, iske liye account manager plan dikha denge
+    ask: 15 minute ki meeting kal subah 11 baje ya kal shaam 4 baje — kab rakhein?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: retail-style language; vague claims without the category
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: manufacturer__already_met
+  persona_id: manufacturer
+  behaviour: already_met
+  simulated_seller: 'You are a seller on IndiaMART: Precision Auto Components (CNC Turned Parts, Pune). Speak Hinglish, short
+    replies. Say an IndiaMART executive already visited you last month and you already have IndiaMART. Be mildly dismissive.
+    Agree only if the agent offers a follow-up with the same executive.'
+  expected_outcome: meeting_fixed or already_in_touch
+  pass_criteria: *id003
+  variables:
+    seller_glid: '900000043'
+    persona_id: manufacturer
+    persona_label: Manufacturer
+    voice_variant: formal
+    language: Hindi
+    agent_name: Aditya
+    address: ji
+    company: Precision Auto Components
+    category: CNC Turned Parts
+    city: Pune
+    tone: Practical, B2B. Talk about bulk buyers and repeat orders.
+    formality: high
+    pitch_cap_turns: '2'
+    opener: Namaste ji, Aditya IndiaMART se. Aap CNC Turned Parts banate hain na? Ek minute lunga.
+    value_hook: bulk aur repeat buyers ki enquiries aap tak sahi tarah pahunchein, iske liye account manager plan dikha denge
+    ask: 15 minute ki meeting kal subah 11 baje ya kal shaam 4 baje — kab rakhein?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: retail-style language; vague claims without the category
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: manufacturer__price
+  persona_id: manufacturer
+  behaviour: price
+  simulated_seller: 'You are a seller on IndiaMART: Precision Auto Components (CNC Turned Parts, Pune). Speak Hinglish, short
+    replies. Ask how much the IndiaMART package costs, twice. You are interested if the price is reasonable. Agree to a meeting
+    if the agent says the executive will explain options.'
+  expected_outcome: meeting_fixed
+  pass_criteria: *id004
+  variables:
+    seller_glid: '900000043'
+    persona_id: manufacturer
+    persona_label: Manufacturer
+    voice_variant: formal
+    language: Hindi
+    agent_name: Aditya
+    address: ji
+    company: Precision Auto Components
+    category: CNC Turned Parts
+    city: Pune
+    tone: Practical, B2B. Talk about bulk buyers and repeat orders.
+    formality: high
+    pitch_cap_turns: '2'
+    opener: Namaste ji, Aditya IndiaMART se. Aap CNC Turned Parts banate hain na? Ek minute lunga.
+    value_hook: bulk aur repeat buyers ki enquiries aap tak sahi tarah pahunchein, iske liye account manager plan dikha denge
+    ask: 15 minute ki meeting kal subah 11 baje ya kal shaam 4 baje — kab rakhein?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: retail-style language; vague claims without the category
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: manufacturer__irritated
+  persona_id: manufacturer
+  behaviour: irritated
+  simulated_seller: 'You are a seller on IndiaMART: Precision Auto Components (CNC Turned Parts, Pune). Speak Hinglish, short
+    replies. You get many calls. Say ''baar baar call mat karo'' irritably. If the agent pitches again, get angrier.'
+  expected_outcome: do_not_call
+  pass_criteria: *id005
+  variables:
+    seller_glid: '900000043'
+    persona_id: manufacturer
+    persona_label: Manufacturer
+    voice_variant: formal
+    language: Hindi
+    agent_name: Aditya
+    address: ji
+    company: Precision Auto Components
+    category: CNC Turned Parts
+    city: Pune
+    tone: Practical, B2B. Talk about bulk buyers and repeat orders.
+    formality: high
+    pitch_cap_turns: '2'
+    opener: Namaste ji, Aditya IndiaMART se. Aap CNC Turned Parts banate hain na? Ek minute lunga.
+    value_hook: bulk aur repeat buyers ki enquiries aap tak sahi tarah pahunchein, iske liye account manager plan dikha denge
+    ask: 15 minute ki meeting kal subah 11 baje ya kal shaam 4 baje — kab rakhein?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: retail-style language; vague claims without the category
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: service_provider__receptive
+  persona_id: service_provider
+  behaviour: receptive
+  simulated_seller: 'You are a seller on IndiaMART: Sri Murugan Interiors (Interior Designing Service, Chennai). Speak Hinglish,
+    short replies. You are the owner. You are open to hearing more. Ask one simple question about what the meeting is, then
+    agree to one of the offered times.'
+  expected_outcome: meeting_fixed
+  pass_criteria: *id001
+  variables:
+    seller_glid: '900000054'
+    persona_id: service_provider
+    persona_label: Service provider
+    voice_variant: warm
+    language: Tamil
+    agent_name: Simran
+    address: ji
+    company: Sri Murugan Interiors
+    category: Interior Designing Service
+    city: Chennai
+    tone: Consultative. Local service enquiries and visibility.
+    formality: medium
+    pitch_cap_turns: '2'
+    opener: Namaste ji, IndiaMART se Simran. Aapki Interior Designing Service service ke liye ek minute baat ho sakti hai?
+    value_hook: aapke sheher mein Interior Designing Service ke liye log dhoondh rahe hain — executive bata denge zyada enquiries
+      kaise milengi
+    ask: Kya kal subah 11 baje ya kal shaam 4 baje par 15 minute mil sakte hain?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: product/stock language
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: service_provider__busy
+  persona_id: service_provider
+  behaviour: busy
+  simulated_seller: 'You are a seller on IndiaMART: Sri Murugan Interiors (Interior Designing Service, Chennai). Speak Hinglish,
+    short replies. You are in the middle of work (customers, factory floor or a meeting). Say you are busy right now. If the
+    agent offers a specific time, pick the evening one. If the agent keeps pitching, hang up.'
+  expected_outcome: callback_scheduled or meeting_fixed
+  pass_criteria: *id002
+  variables:
+    seller_glid: '900000054'
+    persona_id: service_provider
+    persona_label: Service provider
+    voice_variant: warm
+    language: Tamil
+    agent_name: Simran
+    address: ji
+    company: Sri Murugan Interiors
+    category: Interior Designing Service
+    city: Chennai
+    tone: Consultative. Local service enquiries and visibility.
+    formality: medium
+    pitch_cap_turns: '2'
+    opener: Namaste ji, IndiaMART se Simran. Aapki Interior Designing Service service ke liye ek minute baat ho sakti hai?
+    value_hook: aapke sheher mein Interior Designing Service ke liye log dhoondh rahe hain — executive bata denge zyada enquiries
+      kaise milengi
+    ask: Kya kal subah 11 baje ya kal shaam 4 baje par 15 minute mil sakte hain?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: product/stock language
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: service_provider__already_met
+  persona_id: service_provider
+  behaviour: already_met
+  simulated_seller: 'You are a seller on IndiaMART: Sri Murugan Interiors (Interior Designing Service, Chennai). Speak Hinglish,
+    short replies. Say an IndiaMART executive already visited you last month and you already have IndiaMART. Be mildly dismissive.
+    Agree only if the agent offers a follow-up with the same executive.'
+  expected_outcome: meeting_fixed or already_in_touch
+  pass_criteria: *id003
+  variables:
+    seller_glid: '900000054'
+    persona_id: service_provider
+    persona_label: Service provider
+    voice_variant: warm
+    language: Tamil
+    agent_name: Simran
+    address: ji
+    company: Sri Murugan Interiors
+    category: Interior Designing Service
+    city: Chennai
+    tone: Consultative. Local service enquiries and visibility.
+    formality: medium
+    pitch_cap_turns: '2'
+    opener: Namaste ji, IndiaMART se Simran. Aapki Interior Designing Service service ke liye ek minute baat ho sakti hai?
+    value_hook: aapke sheher mein Interior Designing Service ke liye log dhoondh rahe hain — executive bata denge zyada enquiries
+      kaise milengi
+    ask: Kya kal subah 11 baje ya kal shaam 4 baje par 15 minute mil sakte hain?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: product/stock language
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: service_provider__price
+  persona_id: service_provider
+  behaviour: price
+  simulated_seller: 'You are a seller on IndiaMART: Sri Murugan Interiors (Interior Designing Service, Chennai). Speak Hinglish,
+    short replies. Ask how much the IndiaMART package costs, twice. You are interested if the price is reasonable. Agree to
+    a meeting if the agent says the executive will explain options.'
+  expected_outcome: meeting_fixed
+  pass_criteria: *id004
+  variables:
+    seller_glid: '900000054'
+    persona_id: service_provider
+    persona_label: Service provider
+    voice_variant: warm
+    language: Tamil
+    agent_name: Simran
+    address: ji
+    company: Sri Murugan Interiors
+    category: Interior Designing Service
+    city: Chennai
+    tone: Consultative. Local service enquiries and visibility.
+    formality: medium
+    pitch_cap_turns: '2'
+    opener: Namaste ji, IndiaMART se Simran. Aapki Interior Designing Service service ke liye ek minute baat ho sakti hai?
+    value_hook: aapke sheher mein Interior Designing Service ke liye log dhoondh rahe hain — executive bata denge zyada enquiries
+      kaise milengi
+    ask: Kya kal subah 11 baje ya kal shaam 4 baje par 15 minute mil sakte hain?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: product/stock language
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: service_provider__irritated
+  persona_id: service_provider
+  behaviour: irritated
+  simulated_seller: 'You are a seller on IndiaMART: Sri Murugan Interiors (Interior Designing Service, Chennai). Speak Hinglish,
+    short replies. You get many calls. Say ''baar baar call mat karo'' irritably. If the agent pitches again, get angrier.'
+  expected_outcome: do_not_call
+  pass_criteria: *id005
+  variables:
+    seller_glid: '900000054'
+    persona_id: service_provider
+    persona_label: Service provider
+    voice_variant: warm
+    language: Tamil
+    agent_name: Simran
+    address: ji
+    company: Sri Murugan Interiors
+    category: Interior Designing Service
+    city: Chennai
+    tone: Consultative. Local service enquiries and visibility.
+    formality: medium
+    pitch_cap_turns: '2'
+    opener: Namaste ji, IndiaMART se Simran. Aapki Interior Designing Service service ke liye ek minute baat ho sakti hai?
+    value_hook: aapke sheher mein Interior Designing Service ke liye log dhoondh rahe hain — executive bata denge zyada enquiries
+      kaise milengi
+    ask: Kya kal subah 11 baje ya kal shaam 4 baje par 15 minute mil sakte hain?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: product/stock language
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: trader_wholesaler__receptive
+  persona_id: trader_wholesaler
+  behaviour: receptive
+  simulated_seller: 'You are a seller on IndiaMART: Kolkata Steel Traders (MS Pipe, Kolkata). Speak Hinglish, short replies.
+    You are the owner. You are open to hearing more. Ask one simple question about what the meeting is, then agree to one
+    of the offered times.'
+  expected_outcome: meeting_fixed
+  pass_criteria: *id001
+  variables:
+    seller_glid: '900000065'
+    persona_id: trader_wholesaler
+    persona_label: Trader / wholesaler
+    voice_variant: brisk
+    language: Bengali
+    agent_name: Priya
+    address: ji
+    company: Kolkata Steel Traders
+    category: MS Pipe
+    city: Kolkata
+    tone: Business-like and quick. Wholesale buyers, more orders.
+    formality: medium
+    pitch_cap_turns: '2'
+    opener: Namaste ji, Priya IndiaMART se. Ek minute — aapke business ke liye kaam ki baat hai.
+    value_hook: wholesale buyers ki enquiries badhane ke liye executive aapko seedha plan dikha denge
+    ask: kal subah 11 baje ya kal shaam 4 baje — kab milna theek rahega?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: long explanations
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: 'Acknowledge: ''aap hamare executive se jude hain — unke saath follow-up meeting fix kar dein?'''
+- id: trader_wholesaler__busy
+  persona_id: trader_wholesaler
+  behaviour: busy
+  simulated_seller: 'You are a seller on IndiaMART: Kolkata Steel Traders (MS Pipe, Kolkata). Speak Hinglish, short replies.
+    You are in the middle of work (customers, factory floor or a meeting). Say you are busy right now. If the agent offers
+    a specific time, pick the evening one. If the agent keeps pitching, hang up.'
+  expected_outcome: callback_scheduled or meeting_fixed
+  pass_criteria: *id002
+  variables:
+    seller_glid: '900000065'
+    persona_id: trader_wholesaler
+    persona_label: Trader / wholesaler
+    voice_variant: brisk
+    language: Bengali
+    agent_name: Priya
+    address: ji
+    company: Kolkata Steel Traders
+    category: MS Pipe
+    city: Kolkata
+    tone: Business-like and quick. Wholesale buyers, more orders.
+    formality: medium
+    pitch_cap_turns: '2'
+    opener: Namaste ji, Priya IndiaMART se. Ek minute — aapke business ke liye kaam ki baat hai.
+    value_hook: wholesale buyers ki enquiries badhane ke liye executive aapko seedha plan dikha denge
+    ask: kal subah 11 baje ya kal shaam 4 baje — kab milna theek rahega?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: long explanations
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: 'Acknowledge: ''aap hamare executive se jude hain — unke saath follow-up meeting fix kar dein?'''
+- id: trader_wholesaler__already_met
+  persona_id: trader_wholesaler
+  behaviour: already_met
+  simulated_seller: 'You are a seller on IndiaMART: Kolkata Steel Traders (MS Pipe, Kolkata). Speak Hinglish, short replies.
+    Say an IndiaMART executive already visited you last month and you already have IndiaMART. Be mildly dismissive. Agree
+    only if the agent offers a follow-up with the same executive.'
+  expected_outcome: meeting_fixed or already_in_touch
+  pass_criteria: *id003
+  variables:
+    seller_glid: '900000065'
+    persona_id: trader_wholesaler
+    persona_label: Trader / wholesaler
+    voice_variant: brisk
+    language: Bengali
+    agent_name: Priya
+    address: ji
+    company: Kolkata Steel Traders
+    category: MS Pipe
+    city: Kolkata
+    tone: Business-like and quick. Wholesale buyers, more orders.
+    formality: medium
+    pitch_cap_turns: '2'
+    opener: Namaste ji, Priya IndiaMART se. Ek minute — aapke business ke liye kaam ki baat hai.
+    value_hook: wholesale buyers ki enquiries badhane ke liye executive aapko seedha plan dikha denge
+    ask: kal subah 11 baje ya kal shaam 4 baje — kab milna theek rahega?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: long explanations
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: 'Acknowledge: ''aap hamare executive se jude hain — unke saath follow-up meeting fix kar dein?'''
+- id: trader_wholesaler__price
+  persona_id: trader_wholesaler
+  behaviour: price
+  simulated_seller: 'You are a seller on IndiaMART: Kolkata Steel Traders (MS Pipe, Kolkata). Speak Hinglish, short replies.
+    Ask how much the IndiaMART package costs, twice. You are interested if the price is reasonable. Agree to a meeting if
+    the agent says the executive will explain options.'
+  expected_outcome: meeting_fixed
+  pass_criteria: *id004
+  variables:
+    seller_glid: '900000065'
+    persona_id: trader_wholesaler
+    persona_label: Trader / wholesaler
+    voice_variant: brisk
+    language: Bengali
+    agent_name: Priya
+    address: ji
+    company: Kolkata Steel Traders
+    category: MS Pipe
+    city: Kolkata
+    tone: Business-like and quick. Wholesale buyers, more orders.
+    formality: medium
+    pitch_cap_turns: '2'
+    opener: Namaste ji, Priya IndiaMART se. Ek minute — aapke business ke liye kaam ki baat hai.
+    value_hook: wholesale buyers ki enquiries badhane ke liye executive aapko seedha plan dikha denge
+    ask: kal subah 11 baje ya kal shaam 4 baje — kab milna theek rahega?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: long explanations
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: 'Acknowledge: ''aap hamare executive se jude hain — unke saath follow-up meeting fix kar dein?'''
+- id: trader_wholesaler__irritated
+  persona_id: trader_wholesaler
+  behaviour: irritated
+  simulated_seller: 'You are a seller on IndiaMART: Kolkata Steel Traders (MS Pipe, Kolkata). Speak Hinglish, short replies.
+    You get many calls. Say ''baar baar call mat karo'' irritably. If the agent pitches again, get angrier.'
+  expected_outcome: do_not_call
+  pass_criteria: *id005
+  variables:
+    seller_glid: '900000065'
+    persona_id: trader_wholesaler
+    persona_label: Trader / wholesaler
+    voice_variant: brisk
+    language: Bengali
+    agent_name: Priya
+    address: ji
+    company: Kolkata Steel Traders
+    category: MS Pipe
+    city: Kolkata
+    tone: Business-like and quick. Wholesale buyers, more orders.
+    formality: medium
+    pitch_cap_turns: '2'
+    opener: Namaste ji, Priya IndiaMART se. Ek minute — aapke business ke liye kaam ki baat hai.
+    value_hook: wholesale buyers ki enquiries badhane ke liye executive aapko seedha plan dikha denge
+    ask: kal subah 11 baje ya kal shaam 4 baje — kab milna theek rahega?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: long explanations
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: 'Acknowledge: ''aap hamare executive se jude hain — unke saath follow-up meeting fix kar dein?'''
+- id: edge__confused
+  persona_id: busy_retailer
+  behaviour: confused
+  simulated_seller: You are connected to Gupta Kirana and General Store (Basmati Rice, Jaipur). Ask 'kaun? kahan se bol rahe
+    ho? kya kaam hai?' twice. Calm down once it's clear, then accept a time.
+  expected_outcome: meeting_fixed
+  pass_criteria:
+  - Agent explains who/why/benefit in one plain sentence
+  - Agent does not repeat the long intro
+  - Agent then asks for a time
+  variables:
+    seller_glid: '900000032'
+    persona_id: busy_retailer
+    persona_label: Busy retailer / shopkeeper
+    voice_variant: brisk
+    language: Hindi
+    agent_name: Priya
+    address: ji
+    company: Gupta Kirana and General Store
+    category: Basmati Rice
+    city: Jaipur
+    tone: Brisk and respectful of their time. One line of value, then a time choice.
+    formality: medium
+    pitch_cap_turns: '1'
+    opener: Namaste ji, IndiaMART se Priya — sirf 20 second lungi.
+    value_hook: aapke area ke buyers Basmati Rice dhoondh rahe hain — executive 15 minute mein bata denge unhe kaise pakdein
+    ask: Dukaan par kab free rehte hain — kal subah 11 baje ya kal shaam 4 baje?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: more than one sentence per turn; asking open questions like 'kaisa chal raha hai business'
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: edge__bot_question
+  persona_id: new_seller
+  behaviour: bot_question
+  simulated_seller: You are connected to Navya Herbal Care (Herbal Face Pack, Lucknow). Ask 'aap bot ho kya? recording hai?'.
+    If the agent is honest, continue and agree to a meeting; if it claims to be human, hang up.
+  expected_outcome: meeting_fixed
+  pass_criteria:
+  - Agent says honestly it is an AI assistant
+  - Agent offers a human executive
+  - Conversation continues politely
+  variables:
+    seller_glid: '900000021'
+    persona_id: new_seller
+    persona_label: New seller (GST ≤ 2 years)
+    voice_variant: warm
+    language: Hindi
+    agent_name: Simran
+    address: ji
+    company: Navya Herbal Care
+    category: Herbal Face Pack
+    city: Lucknow
+    tone: Warm, encouraging, guiding. They are early — show how a meeting helps them get first buyers.
+    formality: medium
+    pitch_cap_turns: '3'
+    opener: Namaste ji, IndiaMART se Simran bol rahi hoon. Navya Herbal Care ke liye ek achhi khabar thi — ek minute hai?
+    value_hook: hamare executive aapki profile aur products sahi se set kar denge, jisse Herbal Face Pack ke buyers aap tak
+      pahunchein
+    ask: Executive aapke paas aakar 20 minute mein sab samjha denge. kal subah 11 baje theek rahega ya kal shaam 4 baje?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: jargon (CQS, BuyLead, PNS); pressure about paid packages in the first turn
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: edge__tamil
+  persona_id: service_provider
+  behaviour: tamil
+  simulated_seller: You are connected to Sri Murugan Interiors (Interior Designing Service, Chennai). Reply only in Tamil
+    (romanised is fine). Agree to a meeting if the agent switches to Tamil.
+  expected_outcome: meeting_fixed
+  pass_criteria:
+  - Agent switches to Tamil
+  - Agent keeps short turns in Tamil
+  - Agent confirms the time
+  variables:
+    seller_glid: '900000054'
+    persona_id: service_provider
+    persona_label: Service provider
+    voice_variant: warm
+    language: Tamil
+    agent_name: Simran
+    address: ji
+    company: Sri Murugan Interiors
+    category: Interior Designing Service
+    city: Chennai
+    tone: Consultative. Local service enquiries and visibility.
+    formality: medium
+    pitch_cap_turns: '2'
+    opener: Namaste ji, IndiaMART se Simran. Aapki Interior Designing Service service ke liye ek minute baat ho sakti hai?
+    value_hook: aapke sheher mein Interior Designing Service ke liye log dhoondh rahe hain — executive bata denge zyada enquiries
+      kaise milengi
+    ask: Kya kal subah 11 baje ya kal shaam 4 baje par 15 minute mil sakte hain?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: product/stock language
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
+- id: edge__wrong_person
+  persona_id: manufacturer
+  behaviour: wrong_person
+  simulated_seller: You are connected to Precision Auto Components (CNC Turned Parts, Pune). You are the accountant, not the
+    owner. Say the owner is out; give a good time to call him if asked.
+  expected_outcome: callback_scheduled or wrong_contact
+  pass_criteria:
+  - Agent asks for the right person and a good time
+  - Agent does not pitch to the wrong person
+  - No meeting is logged
+  variables:
+    seller_glid: '900000043'
+    persona_id: manufacturer
+    persona_label: Manufacturer
+    voice_variant: formal
+    language: Hindi
+    agent_name: Aditya
+    address: ji
+    company: Precision Auto Components
+    category: CNC Turned Parts
+    city: Pune
+    tone: Practical, B2B. Talk about bulk buyers and repeat orders.
+    formality: high
+    pitch_cap_turns: '2'
+    opener: Namaste ji, Aditya IndiaMART se. Aap CNC Turned Parts banate hain na? Ek minute lunga.
+    value_hook: bulk aur repeat buyers ki enquiries aap tak sahi tarah pahunchein, iske liye account manager plan dikha denge
+    ask: 15 minute ki meeting kal subah 11 baje ya kal shaam 4 baje — kab rakhein?
+    slot_1: kal subah 11 baje
+    slot_2: kal shaam 4 baje
+    avoid: retail-style language; vague claims without the category
+    attempt_no: '1'
+    attempt_note: Normal persona opener.
+    flag_note: ''
