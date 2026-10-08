@@ -58,7 +58,7 @@ Gaps: no documented chat/WhatsApp channel, no documented mid-call voice/pace/pit
 
 | Layer | Tool | Why | Alternative |
 |---|---|---|---|
-| Voice agent | Sarvam Voice Agents (indus.sarvam.ai) | Required; gives an agent ID; handles telephony, STT/TTS, language | LiveKit / Pipecat + Sarvam APIs — more control, much more work |
+| Voice agent | **P4: LiveKit Agents + Sarvam plugins** (primary, mid-call voice/pace switch) and Sarvam Voice Agents (agent ID, fallback) | See [voice platform comparison](../research/voice-platform-comparison.md) | Vapi, Retell, ElevenLabs, OpenAI Realtime — rejected (not Sarvam; Vapi/OpenAI can't switch voice mid-call) |
 | STT | Saaras v4 | Current GA model on Voice Agents | Saaras v3 |
 | TTS | Bulbul v3 / v4 | v4 available on Voice Agents since 6 Oct | — |
 | LLM | Sarvam LLM (`sarvam-105b` or what the event provides) | Required stack; Indic languages | — |

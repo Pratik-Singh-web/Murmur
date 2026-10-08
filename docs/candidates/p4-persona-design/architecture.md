@@ -2,7 +2,34 @@
 
 > Built on the shared stack in [03-architecture](../../03-architecture.md). Sarvam capabilities checked 8 Oct 2026 ([research/sarvam-platform-notes.md](../../../research/sarvam-platform-notes.md)); re-confirm with Sarvam on Day 1.
 
-## Key platform constraint (drives the design)
+## Build path (decided 8 Oct, confirm on Day 1)
+
+Full comparison: [research/voice-platform-comparison.md](../../../research/voice-platform-comparison.md).
+
+| Path | Role | Why |
+|---|---|---|
+| **B. LiveKit Agents + Sarvam STT/TTS/LLM** | **Primary demo** | Real mid-call switching: `SarvamTTS.update_options(speaker, pace, target_language_code)` (verified in `livekit-plugins-sarvam` 1.8.5 source), STT language update, all on Sarvam models |
+| A. Hosted Sarvam Voice Agent | Submission agent ID + baseline + fallback | Hours to build; persona picked before the call; live tone/language only |
+| C. Non-Sarvam platforms (Vapi, Retell, ElevenLabs, OpenAI Realtime) | Rejected | Break the "built on Sarvam" rule; no better Indic evidence; Vapi/OpenAI can't switch voice mid-call |
+
+Rule: if organisers say a LiveKit build doesn't count, A becomes primary and B becomes a recorded stretch demo.
+
+### Path B design (LiveKit)
+
+```mermaid
+flowchart LR
+    U(("Seller<br/>web / SIP")) <--> R["LiveKit room"]
+    R <--> AG["Murmur agent worker (Python)<br/>Saaras v4 STT · Sarvam-105b LLM · Bulbul v3 TTS"]
+    AG -- "job metadata: persona card" --> PE["Persona engine"]
+    AG -- "tool: set_persona(voice, pace, language, mode)" --> AG
+    AG -- "on end: outcome, signals" --> WB["Write-back (SQLite)"]
+```
+
+- At call start, the job metadata carries the persona card. The worker builds the TTS with that persona's `speaker` and `pace` and its `target_language_code`.
+- Mid-call, the LLM calls `set_persona`, or rules fire on detected signals. This calls `tts.update_options(...)` and `stt.update_options(language=...)`, and swaps the system-prompt section for the new mode. The change takes effect on the next utterance. Example: a busy seller gets a faster, shorter style; a confused seller gets a slower, clearer one.
+- A LiveKit-native eval (scripted text turns against the agent) replaces Sarvam Tests on this path. Path A still uses Sarvam Tests.
+
+## Key platform constraint on the hosted agent (path A)
 
 | Can change… | Before the call | During the call |
 |---|---|---|

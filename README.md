@@ -30,6 +30,7 @@ Team repo for **IndiaMART Voice AI Hackathon 2.0** (9–10 Oct 2026). We will bu
 |-----|----------------|
 | [Problem selection](research/problem-selection.md) | Ranking of problems, data availability, repeat-behaviour sizing, Day-1 gate |
 | [PS07 data analysis](research/ps07-data-analysis.md) | Organiser persona dataset: outcomes, segments, objections, personas, implications (aggregates only) |
+| [Voice platform comparison](research/voice-platform-comparison.md) | Sarvam hosted vs LiveKit/Pipecat vs Vapi, Retell, ElevenLabs, Bolna, OpenAI Realtime for mid-call persona switching; Indic quality evidence |
 | [Sarvam platform notes](research/sarvam-platform-notes.md) | Hooks, variables, webhooks, tools, models, channels, and gaps |
 
 ## Contributing
