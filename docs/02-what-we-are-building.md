@@ -1,6 +1,6 @@
 # 02 — What we are building
 
-> **Decided 8 Oct 2026: P4 — Seller-Fit Adaptive Voice Persona.** The organisers' PS07 dataset arrived and the team chose P4 (see [05-decision-log](05-decision-log.md)). Confirm the official statement at 10:30 on Day 1; P2 stays documented as the fallback. Design: [candidates/p4-persona-design/](candidates/p4-persona-design/scope.md). Evidence: [research/ps07-data-analysis.md](../research/ps07-data-analysis.md).
+> **Decided 8 Oct 2026: P4 — Seller-Fit Adaptive Voice Persona.** The organisers' PS07 dataset arrived and the team chose P4 (see [05-decision-log](05-decision-log.md)). Official statement confirmed — **locked**. P2 docs kept for reference only. Design: [candidates/p4-persona-design/](candidates/p4-persona-design/scope.md). Evidence: [research/ps07-data-analysis.md](../research/ps07-data-analysis.md).
 
 ## What is fixed regardless of the problem
 

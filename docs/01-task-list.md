@@ -19,7 +19,6 @@ Owners: **P** = Pratik (Sarvam agent, adaptation, integration) · **E** = engine
 | [x] | Analyse organiser PS07 dataset (149k sellers, 269k bot calls, evaluators, transcripts) | P |
 | [x] | Choose P4; define 6 personas + overlays + adaptation modes from the data | P |
 | [x] | Keep organiser data out of git (`Persona Files/`, `*.csv` ignored) | P |
-| [ ] | Make the GitHub repo private (organiser data findings are internal) | P |
 | [ ] | Confirm team members; add them as collaborators; share the dataset locally (not via git) | P |
 | [ ] | Each member: Sarvam account with Voice Agents access (indus.sarvam.ai/samvaad), laptop ready (Python 3.11, ngrok/cloudflared) | All |
 | [ ] | N: read the P4 scope + data analysis; draft persona playbook tone notes (no code) | N |
@@ -30,7 +29,7 @@ No code and no Sarvam agents are created before Day 1 (pre-built solutions are d
 
 | Status | Task | Owner |
 |---|---|---|
-| [ ] | 10:30: confirm the official PS07 statement, required outputs and metrics; update [scope](candidates/p4-persona-design/scope.md) if different | All |
+| [x] | Confirm the official PS07 statement — **P4 Persona Design locked** | All |
 | [ ] | Ask Sarvam: mid-call voice/pace change on hosted agents? multi-agent? test-call limits? Bulbul v4 speakers per language / in API? | P |
 | [ ] | Spike (1 h) in the Sarvam test panel: multi-state flow with a mode state, language switch, a variable-driven opener; check first-turn latency | P |
 | [ ] | Ask organisers: may we use the dataset quotes in the demo (masked)? live A/B possible? | P |
