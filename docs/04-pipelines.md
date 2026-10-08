@@ -1,6 +1,6 @@
 # 04 — Pipelines
 
-> The problem is not chosen yet. This doc covers the pipelines **every candidate** runs through. Data pipelines specific to a problem are in its candidate folder.
+> **Chosen problem: P4 — Seller-Fit Adaptive Voice Persona** ([P4 pipelines](candidates/p4-persona-design/pipelines.md)). This doc covers the pipelines **every candidate** runs through. Data pipelines specific to a problem are in its candidate folder.
 
 ## Overview
 
@@ -122,4 +122,4 @@ flowchart LR
 | Candidate | Pipelines | Doc |
 |---|---|---|
 | P2 — Global Context | Historical ingest → context build → write-back → serve → evaluation | [pipelines](candidates/p2-global-context/pipelines.md) |
-| P4 — Persona Design | Seller profile → persona selection → live switch → outcome eval | [sketch](candidates/p4-persona-design.md) |
+| **P4 — Seller-Fit Adaptive Voice Persona (chosen)** | Insight mining → persona assignment → call & adapt → write-back → evaluation | [pipelines](candidates/p4-persona-design/pipelines.md) |

@@ -4,8 +4,8 @@ Prepared designs for the problems we might pick. Only one will be built. Status 
 
 | Problem | Status | Design depth | Doc |
 |---|---|---|---|
-| P2 — Global Context: Memory Across Channels | Leading candidate | Detailed | [scope](p2-global-context/scope.md) · [architecture](p2-global-context/architecture.md) · [pipelines](p2-global-context/pipelines.md) |
-| P4 — Persona Design | Fallback | Sketch | [p4-persona-design.md](p4-persona-design.md) |
+| P2 — Global Context: Memory Across Channels | Fallback | Detailed | [scope](p2-global-context/scope.md) · [architecture](p2-global-context/architecture.md) · [pipelines](p2-global-context/pipelines.md) |
+| **P4 — Seller-Fit Adaptive Voice Persona** | **Chosen (8 Oct)** | Detailed | [scope](p4-persona-design/scope.md) · [architecture](p4-persona-design/architecture.md) · [pipelines](p4-persona-design/pipelines.md) |
 | P1 — Quality Audit | Third | One-liner | [research/problem-selection.md](../../research/problem-selection.md#why-not-the-others) |
 | P3, P5, P6 | Not planned | — | same |
 

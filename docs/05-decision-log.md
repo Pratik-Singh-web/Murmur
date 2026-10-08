@@ -4,10 +4,14 @@ One row per decision. Newest at the bottom. Status: **Open** (pending), **Decide
 
 | # | Date | Decision | Status | Why | What would change it |
 |---|---|---|---|---|---|
-| 1 | 2026-10-05 | Rank P2 (Global Context) as leading candidate | Open | Only problem where we have a data edge (Call Insights per-GLID history); strong business case (12% of buyers repeat a category within 30 days) | Call Insights not allowed for the event, or official statement differs from the deck |
-| 2 | 2026-10-08 | P4 (Persona Design) as fallback, P1 third | Open | Strongest voice demo, data provided by organisers; but mid-call voice switching not documented on Sarvam | Sarvam confirms/denies mid-call voice change; P2 gate result |
+| 1 | 2026-10-05 | Rank P2 (Global Context) as leading candidate | Reversed (#7) | Only problem where we have a data edge (Call Insights per-GLID history); strong business case (12% of buyers repeat a category within 30 days) | Call Insights not allowed for the event, or official statement differs from the deck |
+| 2 | 2026-10-08 | P4 (Persona Design) as fallback, P1 third | Reversed (#7) | Strongest voice demo, data provided by organisers; but mid-call voice switching not documented on Sarvam | Sarvam confirms/denies mid-call voice change; P2 gate result |
 | 3 | 2026-10-08 | Final problem chosen on Day 1 by 13:00 via rubric-weighted scoring + data/platform gates | Decided | Statements and data access are confirmed only on Day 1 | — |
 | 4 | 2026-10-08 | Shared stack: Sarvam hosted Voice Agent + FastAPI + SQLite on a team laptop + tunnel | Decided | Fastest path; gives an agent ID; data stays local | Problem needs mid-call voice switching (→ code-first LiveKit/Pipecat) |
 | 5 | 2026-10-08 | Repo is private; no customer data committed; samples synthetic/masked | Decided | "No customer data leaves the premises" | Organisers explicitly allow publishing |
 | 6 | 2026-10-08 | No code before Day 1; repo holds docs and research only | Decided | Pre-built solutions are disqualified | — |
-| 7 | 2026-10-09 | _Chosen problem_ | Open | _fill on Day 1_ | |
+| 7 | 2026-10-08 | **Chosen problem: P4 — Seller-Fit Adaptive Voice Persona (PS07)**; P2 becomes fallback | Decided | Organiser dataset available now (149k sellers, 269k answered bot calls, evaluators, transcripts); clear measurable gap (fit 12.7% vs 20.6%, 28% of calls end in ≤10 s); strongest voice demo; no data-access risk; Sarvam access is free | Official PS07 statement on Day 1 asks for something different |
+| 8 | 2026-10-08 | Persona = 3 Sarvam agent variants (voice + pace) × per-call persona card in `agent_variables`; live adaptation = mode + language, not voice | Decided | Sarvam fixes speaker and pace per agent/call; language, state and variables can change mid-call | Sarvam confirms a supported mid-call voice/pace change |
+| 9 | 2026-10-08 | Six rule-based personas from the data (established, new, retailer, manufacturer, service, trader) + overlays (language zone, attempt, lead type, flags) | Decided | Transparent, explainable, sized and backed by meeting-rate differences | Day-1 statement prescribes a persona set |
+| 10 | 2026-10-08 | Organiser data never committed (git-ignored); demo uses synthetic seller cards | Decided | Files contain unmasked seller names; repo is shared | — |
+| 11 | 2026-10-08 | Evaluate with Sarvam Tests (simulated sellers), baseline vs seller-fit; no causal claims from history | Decided | VANI never varied persona historically; only a one-afternoon personalised trial (+2.8 pp, z≈1.7) | Organisers provide a live A/B slot |

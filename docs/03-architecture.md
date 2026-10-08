@@ -1,6 +1,6 @@
 # 03 — Architecture & tools
 
-> The problem is not chosen yet. This doc covers the **shared stack** every candidate builds on. Problem-specific designs live in [candidates/](candidates/README.md). Diagrams are Mermaid and render on GitHub.
+> **Chosen problem: P4 — Seller-Fit Adaptive Voice Persona** ([P4 architecture](candidates/p4-persona-design/architecture.md)). This doc covers the **shared stack** every candidate builds on. Problem-specific designs live in [candidates/](candidates/README.md). Diagrams are Mermaid and render on GitHub.
 
 ## Shared architecture
 
@@ -100,4 +100,4 @@ Murmur/
 | Candidate | What it adds to the shared stack | Doc |
 |---|---|---|
 | P2 — Global Context | Event store, context builder, `buyer.md`/`seller.md`, web chat as second channel | [architecture](candidates/p2-global-context/architecture.md) |
-| P4 — Persona Design | Persona selector, multi-state agent or code-first pipeline for voice switching | [sketch](candidates/p4-persona-design.md) |
+| **P4 — Seller-Fit Adaptive Voice Persona (chosen)** | Persona engine, 3 agent voice variants, adapt tool, write-back, Sarvam Tests eval | [architecture](candidates/p4-persona-design/architecture.md) |

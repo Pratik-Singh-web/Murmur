@@ -1,6 +1,6 @@
 # 02 — What we are building
 
-> **Problem not decided yet.** Official problem statements are presented on Day 1 (Fri 9 Oct, 10:30). We decide by **13:00 on Day 1** using the criteria and gate below, then fill in the "Final choice" section and log it in [05-decision-log](05-decision-log.md).
+> **Decided 8 Oct 2026: P4 — Seller-Fit Adaptive Voice Persona.** The organisers' PS07 dataset arrived and the team chose P4 (see [05-decision-log](05-decision-log.md)). Confirm the official statement at 10:30 on Day 1; P2 stays documented as the fallback. Design: [candidates/p4-persona-design/](candidates/p4-persona-design/scope.md). Evidence: [research/ps07-data-analysis.md](../research/ps07-data-analysis.md).
 
 ## What is fixed regardless of the problem
 
@@ -25,9 +25,9 @@
 | # | Problem | One line | Our current view |
 |---|---|---|---|
 | P1 | Quality Audit | Audit VANI calls for quality | High impact, but 6 components + dashboard; weak voice score |
-| **P2** | **Global Context: Memory Across Channels** | `buyer.md` / `seller.md` per GLID, loaded before each call/chat, resumes across channels | **Leading candidate** — strong data edge if Call Insights is allowed |
+| P2 | Global Context: Memory Across Channels | `buyer.md` / `seller.md` per GLID, loaded before each call/chat, resumes across channels | Fallback — strong data edge only if Call Insights is allowed |
 | P3 | Best Time to Call | Predict when to call | Pure modelling, near-zero voice score |
-| **P4** | **Persona Design** | Agent persona adapts to the seller, switching live mid-call | **Fallback** — strongest voice demo; mid-call voice switching unconfirmed on Sarvam |
+| **P4** | **Seller-Fit Adaptive Voice Persona** | VANI picks a persona per seller before the call and adapts it live | **Chosen** — organiser dataset (149k sellers, 269k bot calls) shows a 1.6× fit gap; strongest voice demo |
 | P5 | A/B + Auto-rollout | Experiment platform for agent variants | Platform + stats; results synthetic |
 | P6 | Seller Enrichment | Enrich seller profiles | External sources, privacy scrutiny |
 
@@ -70,14 +70,14 @@ Rule of thumb (current): organiser answers OK → **P2**. Call Insights not allo
 
 | Field | Value |
 |---|---|
-| Problem | _TBD — Day 1, by 13:00_ |
-| Why | _TBD_ |
-| What we build (one line) | _TBD_ |
-| Success metrics | _TBD (copy from the official problem statement)_ |
-| Demo story | _TBD_ |
-| Detailed design | `docs/candidates/<chosen>/` |
+| Problem | **P4 — Seller-Fit Adaptive Voice Persona** (PS07) |
+| Why | Organiser data shows a clear, measurable gap: 11.5% meeting-fixed rate, 28% of calls over in ≤10 s, new sellers 20.6% vs established 12.7% on first attempts, retries collapse; one persona for everyone today. Best Voice Experience score; data provided (no access risk); Sarvam access is free |
+| What we build (one line) | A persona engine + 3 Sarvam voice variants + live mode adaptation (busy, clarify, already-met, price, bot, exit, language) that raises meetings fixed per call |
+| Success metrics | Simulated meeting-fixed rate vs single-persona baseline (per persona), early drop, turns to ask, signal handling, false meetings, persona fit — [scope](candidates/p4-persona-design/scope.md#success-metrics) |
+| Demo story | Data → persona cards → two contrasting live calls → numbers ([scope](candidates/p4-persona-design/scope.md#demo-story-57-min)) |
+| Detailed design | [scope](candidates/p4-persona-design/scope.md) · [architecture](candidates/p4-persona-design/architecture.md) · [pipelines](candidates/p4-persona-design/pipelines.md) |
 
 ## Prepared candidate designs
 
-- [P2 — Global Context](candidates/p2-global-context/scope.md) — scope, architecture, pipelines (detailed)
-- [P4 — Persona Design](candidates/p4-persona-design.md) — sketch and open questions
+- [P2 — Global Context](candidates/p2-global-context/scope.md) — fallback: scope, architecture, pipelines
+- [P4 — Seller-Fit Adaptive Voice Persona](candidates/p4-persona-design/scope.md) — **chosen**: scope, architecture, pipelines

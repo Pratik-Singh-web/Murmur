@@ -73,3 +73,22 @@ No separate start-of-call webhook — the on-start hook plays that role.
 - [Variables & Personalization](https://docs.sarvam.ai/conversations/build/variables-personalization)
 - [Instant outbound API](https://docs.sarvam.ai/conversations/api/instant-outbound/create)
 - [Webhook payload](https://docs.sarvam.ai/conversations/api/deployments/webhooks/webhook-payload)
+
+## Persona-specific capabilities (checked 8 Oct 2026, for P4)
+
+| Capability | Status | Source |
+|---|---|---|
+| Voices | Bulbul v3: 37 speakers (23 male, 14 female, e.g. Shubh, Aditya, Rohan, Ritu, Priya, Simran, Kavya); Bulbul v4 (on Voice Agents since 6 Oct) adds descriptive voices such as "Ritu – Hindi Support Agent", "Simran – Hinglish Support Agent", "Pooja – Gujarati Conversational" | `/api-reference/text-to-speech/convert`, `/conversations/build/voice-language` |
+| Voice per starting language | Yes; fixed for the whole call even if the caller switches language | `/changelog/2026/9/9` |
+| Speed / pitch | Agent-level sliders. The Python SDK's `text_to_speech_config.speech_settings` (pace 0.85–2.0, pitch −0.5–0.5) is per session, but it is documented only on PyPI | `/conversations/build/voice-language`, PyPI `sarvam-conv-ai-sdk` |
+| Per-call overrides (outbound API / campaign contact) | `app_overrides`: `initial_bot_message`, `initial_state_name`, `initial_language_name`; plus `agent_variables`. No voice/pace field | `/conversations/api/instant-outbound/create` |
+| Agent per call | Yes: `app_id` + `app_version` on every outbound call → one agent variant per voice/pace | same |
+| Change voice mid-call | **Not documented** | — |
+| Change language mid-call | Yes: auto switch, built-in language tool, `context.change_language()` in code tools | `/conversations/build/tools/core-tools` |
+| Multi-state | Per-state instructions, tools and transitions; no per-state voice; marked as an older paradigm to be replaced by multi-agent (not yet available) | `/conversations/build/states-conversation-flow` |
+| Tools write variables mid-call | Yes ("Save reply into variables"; `context.set_agent_variable()` in code tools, which are available on request) | `/conversations/build/tools/https-tool` |
+| Testing | Test panel (browser voice, chat, whitelisted phone) with speaker/language/variable override; **Tests** = AI-simulated user + AI judge, repeat runs, REST API | `/conversations/build/tests` |
+| Analytics | Goals analytics includes "TTS voice × goal rate" | `/conversations/monitor/agent-analytics/goals` |
+| Limits | Campaigns: 10 concurrent; Bulbul v3 Starter 30 req/min; code tools and workflows enterprise/on request | `/api/getting-started/ratelimits` |
+
+Implication: pick voice and pace **before** the call (agent variant), and adapt tone, script, state and language **during** it. Real mid-call voice switching would need a LiveKit/Pipecat pipeline on the raw Saaras/Bulbul APIs (kept as a stretch goal).

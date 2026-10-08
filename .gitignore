@@ -24,3 +24,7 @@ venv/
 # Node
 node_modules/
 dist/
+
+# Organiser datasets (customer data) - never commit
+Persona Files/
+*.csv
