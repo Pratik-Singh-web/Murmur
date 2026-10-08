@@ -31,6 +31,14 @@ Team repo for **IndiaMART Voice AI Hackathon 2.0** (9–10 Oct 2026). We will bu
 | [Problem selection](research/problem-selection.md) | Ranking of problems, data availability, repeat-behaviour sizing, Day-1 gate |
 | [Sarvam platform notes](research/sarvam-platform-notes.md) | Hooks, variables, webhooks, tools, models, channels, and gaps |
 
+## Contributing
+
+Clone, branch, commit and keep docs in sync: see **[CONTRIBUTING.md](CONTRIBUTING.md)**.
+
+```bash
+git clone https://github.com/Pratik-Singh-web/Murmur.git
+```
+
 ## How we keep this up to date
 
 - Task status changes go in the same commit as the work ([01-task-list](docs/01-task-list.md)).
