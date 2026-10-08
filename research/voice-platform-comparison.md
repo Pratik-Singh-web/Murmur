@@ -29,7 +29,11 @@ P4's core feature is a persona that **adapts mid-call**. On Sarvam's hosted Voic
 - **TTS, vendor-run (not independent):** Caller Digital — Bulbul MOS 4.2–4.5 vs ElevenLabs 3.7–4.2, Google 3.5–3.9; code-mixing Bulbul ahead. <https://caller.digital/blog/indic-tts-benchmark-bulbul-elevenlabs-sarvam-google-ai4bharat-2026>
 - Conclusion: **no evidence that another vendor beats Sarvam on Hindi/Hinglish phone speech**; Sarvam is at least competitive and probably best for our sellers.
 
-## Verdict
+## Final decision (8 Oct, team)
+
+**Build everything on the hosted Sarvam platform** (decision #13). LiveKit + Sarvam models remains documented below as the only route to mid-call voice or pace changes, if judges ever require it. Live adaptation is done through Sarvam states, variables and language switching instead.
+
+## Verdict (research recommendation, superseded)
 
 **Keep Sarvam models. Choose the orchestration layer by how much live switching we want.**
 

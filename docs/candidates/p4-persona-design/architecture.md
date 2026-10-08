@@ -2,34 +2,46 @@
 
 > Built on the shared stack in [03-architecture](../../03-architecture.md). Sarvam capabilities checked 8 Oct 2026 ([research/sarvam-platform-notes.md](../../../research/sarvam-platform-notes.md)); re-confirm with Sarvam on Day 1.
 
-## Build path (decided 8 Oct, confirm on Day 1)
+## Build path (decided 8 Oct): everything on the Sarvam platform
 
-Full comparison: [research/voice-platform-comparison.md](../../../research/voice-platform-comparison.md).
+The team decided to build everything on **Sarvam Voice Agents (hosted)**. It is the company-provided platform, it gives the submission's agent ID, it has the best Hindi/Hinglish evidence, and it ships telephony, campaigns, tests and analytics out of the box. Outside Sarvam we keep only thin glue code (the persona engine script and a webhook receiver). LiveKit was evaluated ([comparison](../../../research/voice-platform-comparison.md)) and set aside. Its only advantage is changing voice and pace mid-call, and we cover that need with mode and language adaptation (below).
 
-| Path | Role | Why |
-|---|---|---|
-| **B. LiveKit Agents + Sarvam STT/TTS/LLM** | **Primary demo** | Real mid-call switching: `SarvamTTS.update_options(speaker, pace, target_language_code)` (verified in `livekit-plugins-sarvam` 1.8.5 source), STT language update, all on Sarvam models |
-| A. Hosted Sarvam Voice Agent | Submission agent ID + baseline + fallback | Hours to build; persona picked before the call; live tone/language only |
-| C. Non-Sarvam platforms (Vapi, Retell, ElevenLabs, OpenAI Realtime) | Rejected | Break the "built on Sarvam" rule; no better Indic evidence; Vapi/OpenAI can't switch voice mid-call |
+### Sarvam feature map
 
-Rule: if organisers say a LiveKit build doesn't count, A becomes primary and B becomes a recorded stretch demo.
+| Need | Sarvam feature we use |
+|---|---|
+| Voice + pace per persona | **3 agent variants** (Warm / Formal / Brisk): same prompt and flow, different speaker + speed slider; picked per call with `app_id` |
+| Persona card per seller | **Agent variables**, filled by **campaign CSV** (batch) or the **outbound API** `agent_variables` (single call); optional **on-start hook** for inbound |
+| Language per seller | `initial_language_name` per contact + per-language voice mapping; **"Switch language during call"** on |
+| Conversation structure | **Multi-state agent**: Open → Value → Ask → Book → Confirm → Close, plus mode states Compress / Clarify / Acknowledge / Interest / Transparent / Exit |
+| Live adaptation | **State transitions** on seller signals (LLM-judged conditions) + mode guidance in variables; optional **HTTP tool** (`adapt`) with "save reply into variables" for ambiguous cases |
+| IndiaMART facts (packages, what the meeting is) | **Knowledge base** |
+| Outcome capture | **Output variables** (outcome, slot, signals, persona) + **goal rule** `meeting_fixed = yes` |
+| Write-back | **On-end webhook** → our tiny receiver (SQLite) → next-attempt policy |
+| Evaluation | **Tests**: AI-simulated sellers + AI judge, repeated runs; baseline agent vs seller-fit agents |
+| Measurement | **Analytics**: goal rate, "TTS voice × goal rate", transcripts |
+| Config as code | Agent configs exported to `agent/` in the repo; if the Sarvam MCP connector works, push configs through it |
 
-### Path B design (LiveKit)
+### What changes live vs before the call
+
+- **Before the call (audible persona):** voice, pace and starting language come from the agent variant and the contact's language. Tone, opener, hook and pitch length come from the persona card.
+- **During the call (adaptive persona):** mode (state), wording and turn length, plus language. A "brisk" feel mid-call comes from shorter turns, and a "calm" feel from slower, simpler wording and reassurance. **Voice and speed do not change mid-call.** We say this openly in the approach note and present it as a deliberate platform-native design.
 
 ```mermaid
 flowchart LR
-    U(("Seller<br/>web / SIP")) <--> R["LiveKit room"]
-    R <--> AG["Murmur agent worker (Python)<br/>Saaras v4 STT · Sarvam-105b LLM · Bulbul v3 TTS"]
-    AG -- "job metadata: persona card" --> PE["Persona engine"]
-    AG -- "tool: set_persona(voice, pace, language, mode)" --> AG
-    AG -- "on end: outcome, signals" --> WB["Write-back (SQLite)"]
+    PE["Persona engine (Python script)<br/>seller row → persona card"] -- "campaign CSV / outbound API<br/>app_id + agent_variables + language" --> SV
+    subgraph SV["Sarvam Voice Agents"]
+        W["Warm variant"]
+        F["Formal variant"]
+        B["Brisk variant"]
+        KB[("Knowledge base")]
+        T["Tests + Analytics"]
+    end
+    SV -- "on-end webhook" --> WB["Webhook receiver<br/>SQLite + next-attempt policy"]
+    WB -- "next attempt card" --> PE
 ```
 
-- At call start, the job metadata carries the persona card. The worker builds the TTS with that persona's `speaker` and `pace` and its `target_language_code`.
-- Mid-call, the LLM calls `set_persona`, or rules fire on detected signals. This calls `tts.update_options(...)` and `stt.update_options(language=...)`, and swaps the system-prompt section for the new mode. The change takes effect on the next utterance. Example: a busy seller gets a faster, shorter style; a confused seller gets a slower, clearer one.
-- A LiveKit-native eval (scripted text turns against the agent) replaces Sarvam Tests on this path. Path A still uses Sarvam Tests.
-
-## Key platform constraint on the hosted agent (path A)
+## Key platform constraint (drives the design)
 
 | Can change… | Before the call | During the call |
 |---|---|---|
@@ -136,7 +148,7 @@ sequenceDiagram
 | One agent, persona only in prompt | Partial | Can't vary voice or pace → loses the most audible persona dimension |
 | One agent per persona (6+) | Too many | Six prompts to keep in sync; voice/pace only needs 3 variants |
 | **3 voice variants × persona card in variables** | **Chosen** | Voice + pace per persona, one shared flow, tone/script per seller |
-| LiveKit/Pipecat code-first with mid-call voice switch | Stretch only | Real voice switching, but heavy build, latency risk, may not count as "Sarvam agent ID" |
+| LiveKit/Pipecat + Sarvam models with mid-call voice switch | Not doing (team decision: Sarvam platform only) | Real voice switching, but heavy build, latency risk, may not count as "Sarvam agent ID" |
 
 ## Risks
 

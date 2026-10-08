@@ -31,9 +31,8 @@ No code and no Sarvam agents are created before Day 1 (pre-built solutions are d
 | Status | Task | Owner |
 |---|---|---|
 | [ ] | 10:30: confirm the official PS07 statement, required outputs and metrics; update [scope](candidates/p4-persona-design/scope.md) if different | All |
-| [ ] | Ask organisers: does a LiveKit build on Sarvam STT/TTS/LLM satisfy "built on Sarvam" and the agent-ID item? (decides path B vs A — [comparison](../research/voice-platform-comparison.md)) | P |
 | [ ] | Ask Sarvam: mid-call voice/pace change on hosted agents? multi-agent? test-call limits? Bulbul v4 speakers per language / in API? | P |
-| [ ] | Spike (1 h): LiveKit + `livekit-agents[sarvam]` — confirm `tts.update_options(speaker, pace)` changes the next utterance live; measure turn latency on web | P |
+| [ ] | Spike (1 h) in the Sarvam test panel: multi-state flow with a mode state, language switch, a variable-driven opener; check first-turn latency | P |
 | [ ] | Ask organisers: may we use the dataset quotes in the demo (masked)? live A/B possible? | P |
 | [ ] | Log answers in [05-decision-log](05-decision-log.md) | P |
 | [ ] | Persona playbook v1 (YAML): 6 personas × tone, 2 openers, hook, pitch cap, objection lines, booking style | N + P |
@@ -46,10 +45,9 @@ No code and no Sarvam agents are created before Day 1 (pre-built solutions are d
 |---|---|---|
 | [ ] | Persona engine v0: seller row → persona id + overlays → persona card (rules + templates) | E |
 | [ ] | Synthetic seller cards (10) covering all personas and languages → `samples/` | E + N |
-| [ ] | Path B: LiveKit agent worker with Sarvam STT/TTS/LLM; persona card from job metadata; `set_persona` tool (voice, pace, language, mode) | P |
-| [ ] | Path A (thin): hosted Sarvam agent with the same prompt + persona variables — agent ID, baseline, fallback | P |
-| [ ] | Path A: 3 voice variants; output variables (outcome, slot, signals) + goal rule (meeting fixed) | P |
-| [ ] | FastAPI service: dialler (outbound API with `app_id` + `agent_variables`), on-end webhook, adapt tool endpoint, shared-secret auth; tunnel up | E + P |
+| [ ] | Sarvam base agent: prompt reading persona-card variables; multi-state flow (Open → Value → Ask → Book → Confirm → Close + mode states Compress / Clarify / Acknowledge / Interest / Transparent / Exit); auto language switch; knowledge base | P |
+| [ ] | 3 voice variants (Warm / Formal / Brisk) from the base agent; output variables (outcome, slot, signals, persona) + goal rule (meeting fixed) | P |
+| [ ] | Glue: persona engine → campaign CSV / outbound API (`app_id` + `agent_variables` + language); webhook receiver (SQLite) behind a tunnel; optional `adapt` HTTP tool | E + P |
 | [ ] | First end-to-end call to a team phone: card → call → webhook stored | P + E |
 | [ ] | Baseline agent: single "Payal" persona (today's script) for comparison | P |
 | [ ] | Test scenarios: 6 personas × 5 behaviours (receptive, busy, sceptical/already met, price, hostile) from real objection patterns | N |
