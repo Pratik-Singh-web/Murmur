@@ -50,7 +50,7 @@ cat out/real/summary.txt     # expect roughly: new 31%, established 25%, trader 
 1. Open **indus.sarvam.ai** and sign in with the company access.
 2. Find and note, in `solution/.env` (copy `.env.example` to `.env` first):
    - **Org ID** and **Workspace ID**: usually in the URL or Settings.
-   - **API key**: Settings → API keys. Also note the header name shown in the docs or example (`api-subscription-key` is the usual one).
+   - **API key**: Settings → API keys. The API key header is `X-API-Key` (already set in `.env.example`).
 
 **Why:** `service/dial.py` needs these to place calls through Sarvam's outbound API. Never commit `.env`, because it holds your key (git already ignores it).
 

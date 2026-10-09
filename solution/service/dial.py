@@ -90,7 +90,7 @@ def main() -> None:
         print(url)
         print(json.dumps(payload, ensure_ascii=False, indent=2))
         return
-    headers = {os.environ.get("SARVAM_AUTH_HEADER", "api-subscription-key"): os.environ["SARVAM_API_KEY"],
+    headers = {os.environ.get("SARVAM_AUTH_HEADER", "X-API-Key"): os.environ["SARVAM_API_KEY"],
                "Content-Type": "application/json"}
     r = httpx.post(url, json=payload, headers=headers, timeout=30)
     print(r.status_code, r.text)
